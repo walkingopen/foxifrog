@@ -14,7 +14,7 @@ object GenerateMetaInfo {
     * generate meta file from the sql file
     */
   def generateMetaOfSql(): Unit = {
-    val dir = "/Users/mars/Desktop/打假通/DP_SQL/sql"
+    val dir = "/Users/mars/Desktop/DP_SQL/sql"
     for (file <- new File(dir).listFiles().filter(!_.getName.contains(".DS_"))) {
       if (!file.getName.startsWith(".")) {
         var sql = Source.fromFile(file, enc = "UTF-8").mkString.replace("\n"," ").toUpperCase()
@@ -60,7 +60,7 @@ object GenerateMetaInfo {
     * generate sql file from the meta file
     */
   def generateSqlOfMeta(): Unit = {
-    val dir = "/Users/mars/Desktop/打假通/DP_SQL/meta"
+    val dir = "/Users/mars/Desktop/DP_SQL/meta"
     for (file <- new File(dir).listFiles().filter(!_.getName.contains(".DS_")).filter(!_.getName().contains("DIM_CODE"))) {
       val meta = XML.loadFile(file)
       var tableName = (meta \ "source" \ "@table_name").text
@@ -79,7 +79,7 @@ object GenerateMetaInfo {
         tableNameEx = "ex_" + tableNameEx.toLowerCase()
       }
 //      println(tableName)
-      val savePath = "/Users/mars/Desktop/打假通/DP_SQL/"
+      val savePath = "/Users/mars/Desktop/DP_SQL/"
       val writer = new PrintWriter(new File(savePath + "sql/" + tableName + ".sql" ))
       val writer1 = new PrintWriter(new File(savePath + "ex/" + tableNameEx + ".sql" ))
       writer.write("SELECT\n")
@@ -93,9 +93,6 @@ object GenerateMetaInfo {
         }
       })
       writer.write(s"\nFROM AMML.$tableName")
-//      if (cols.map(_._2).contains("AL_DAY"))
-//        writer.write("\n  WHERE AL_DAY IN ('20170219','20170220','20170221','20170304','20170305','20170306')")
-//        writer.write("\n    AND ${CONDITIONS}")
       writer1.write(s"\nFROM ${tableNameEx}_current")
       writer1.write("\n  LIMIT 2")
       writer.close()
@@ -106,7 +103,7 @@ object GenerateMetaInfo {
   /**
     * 根据注册表结构生成spark-sql建表语句文件
     * @param schema 字段名称
-    * @param dbName 数据库名称，默认为pipe文件名：1-filter.tableName
+    * @param dbName 数据库名称，默认名：dbName.tableName
     * @param tableName 表名：ex_{tableName}
     * @param delimiter 数据分隔符
     * @param dataPath 数据存储路径
@@ -153,7 +150,7 @@ object GenerateMetaInfo {
 
   /**
     * 根据注册表结构生成spark-sql建表语句文件
-    * @param dbName 数据库名称，默认为pipe文件名：1-filter.tableName
+    * @param dbName 数据库名称，默认名：dbName.tableName
     * @param tableName 表名：ex_{tableName}
     * @param dataPath 数据存储路径
     * @param metaPath 生成的元数据保存路劲
@@ -176,7 +173,7 @@ object GenerateMetaInfo {
 
   /**
     * 根据注册表结构生成spark-sql建表语句文件
-    * @param dbName 数据库名称，默认为pipe文件名：1-filter.tableName
+    * @param dbName 数据库名称，默认名：dbName.tableName
     * @param tableName 表名：ex_{tableName}
     * @param partitionBy
     * @param dataPath 数据存储路径
