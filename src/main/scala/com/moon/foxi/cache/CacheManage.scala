@@ -5,7 +5,7 @@ import com.moon.models.{SinkConf, SourceConf, TransformConf, TransformInfo}
 // 确定在此缓存表已经使用完成后，自动将其 uncache 掉，避免资源紧张或者浪费掉了
 object CacheManage {
 
-  // 规则：每个 `cache` 表最后一次使用的表时，进行 `uncache`
+  // 规则：每个 `cache` 表最后一次使用后，进行 `uncache` 操作
   def gemCacheDAG(sourceTables: List[SourceTB], transformTables: List[TransformTB])
     : List[CacheTable] = {
 
@@ -64,11 +64,11 @@ object CacheManage {
 
 // 所有表合集
 case class AllTBS(sourceTBS: List[SourceTB], transformTBS: List[TransformTB], sinkTBS: List[SinkTB])
-// 源表
+// 源数据表
 case class SourceTB(index: Int, tableName: String, isCache: Boolean, isSink: Boolean)
-// 转换表
+// 转换逻辑表
 case class TransformTB(index: Int, tabbleName: String, isCache: Boolean,
                        isSave: Boolean, isSink: Boolean, relatedTables: List[String])
-// 下沉表
+// 结果表
 case class SinkTB(index: Int, tableName: String, isSave: Boolean, isPrint: Boolean)
 case class CacheTable(index: Int, tiggerTable: String, uncacheTable: String)
