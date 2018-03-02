@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<chains>
+    <base>
+        <logPath>/Users/mars/Desktop/Data/tools/logs</logPath>
+        <schemaPath>/Users/mars/Desktop/Data/tools/metapath</schemaPath>
+        <tempPath>file:///Users/mars/Desktop/Data/tools/tmp</tempPath>
+        <metaPath>/Users/mars/Desktop/Data/tools/metadata</metaPath>
+    </base>
+
+    <default-conf>spark.conf</default-conf>
+    <user-conf>
+        <conf name="spark.conf1">spark.conf1</conf>
+        <conf name="spark.conf2">spark.conf2</conf>
+    </user-conf>
+    <chain log="transform.log" run="error_stop"> transform.xml </chain>
+    <chain log="transform.log" run="error_stop" conf="spark.conf1"> transform.xml </chain>
+    <!--<chain log="transform.log" run="error_stop" conf="spark.conf2"> transform.xml </chain>-->
+</chains>

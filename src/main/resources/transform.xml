@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<logic>
+    <parameters>
+        <parameter name="path" value="/Users/mars/Desktop/Data/tools" />
+        <parameter name="path1" value="file:///Users/mars/Desktop/Data/bank/bank/people" />
+        <parameter name="path2" value="file:///Users/mars/Desktop/Data/bank/bank/people_append" />
+        <parameter name="path3" value="file:///Users/mars/Desktop/Data/bank/bank/people_out1" />
+        <parameter name="path4" value="file:///Users/mars/Desktop/Data/bank/bank/people_out2" />
+        <parameter name="path5" value="file:///Users/mars/Desktop/Data/bank/bank/people_out3" />
+    </parameters>
+
+    <base>
+        <logPath>${path}/logs</logPath>
+        <metaPath>${path}/metapath</metaPath>
+        <tempPath>${path}/tmp</tempPath>
+        <schemaPath>${path}/schemapath</schemaPath>
+        <database>test</database>
+    </base>
+
+    <sources>
+        <source tableName="people1" type="parquet" partitions="1" cache="true" dataPath="${path1}"/>
+        <source tableName="people2" type="parquet" partitions="1" cache="true" dataPath="${path2}"/>
+    </sources>
+
+    <transforms>
+        <transform tableName="people_t" cache="true" save="true" type="sql">
+            <![CDATA[
+            select job, day, age, education from people1
+            union all
+            select job, day, age, education from people2
+            ]]>
+        </transform>
+
+        <transform tableName="people_t2" cache="true" save="true" type="sql">
+            <![CDATA[
+            select job, day, age, education from people1
+            union all
+            select job, day, age, education from people2
+            union all
+            select job, day, age, education from people_t
+            ]]>
+        </transform>
+
+        <transform tableName="people_t3" cache="true" save="true" type="sql">
+            <![CDATA[
+            select job, day, age, education from people1
+            union all
+            select job, day, age, education from people_t2
+            ]]>
+        </transform>
+    </transforms>
+
+    <sinks>
+        <sink tableName="people_t" type="parquet" saveMode="overwrite" savePath="${path3}"/>
+        <sink tableName="people_t2" type="txt" partitions="1" delimiter=" || " saveMode="overwrite" savePath="${path4}"/>
+        <sink tableName="people_t3" type="txt" coalesce="2" delimiter=" || " saveMode="overwrite" savePath="${path5}"/>
+    </sinks>
+</logic>

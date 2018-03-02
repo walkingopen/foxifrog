@@ -1,0 +1,5 @@
+metastore_db/
+spark-warehouse/
+/target/
+derby.log
+*.iml
