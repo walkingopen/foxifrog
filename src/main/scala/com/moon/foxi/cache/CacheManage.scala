@@ -2,7 +2,7 @@ package com.moon.foxi.cache
 
 import com.moon.models.{SinkConf, SourceConf, TransformConf, TransformInfo}
 
-/// TODO: 如何确定在 此缓存表已经使用完成后，自动将其 uncache 掉，避免资源紧张或者浪费掉了
+// 确定在此缓存表已经使用完成后，自动将其 uncache 掉，避免资源紧张或者浪费掉了
 object CacheManage {
 
   // 规则：每个 `cache` 表最后一次使用的表时，进行 `uncache`
