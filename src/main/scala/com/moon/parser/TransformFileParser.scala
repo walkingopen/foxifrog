@@ -154,7 +154,7 @@ object TransformFileParser {
 
   def main(args: Array[String]): Unit = {
 
-    val path = "/Users/mars/Documents/Workspace/Coding/IdeaProjects/Scala/SpiderSpark/src/main/resources/transform.xml"
+    val path = ".../resources/transform.xml"
     val transform = transformParser(path)
     println(transform.pipe)
     transform.sources.foreach(println)

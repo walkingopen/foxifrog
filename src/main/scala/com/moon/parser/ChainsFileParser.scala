@@ -57,7 +57,7 @@ class ChainsFileParser {
 
 object ChainsFileParser {
 //  def main(args: Array[String]): Unit = {
-//    var path = "/Users/mars/Documents/Workspace/Coding/IdeaProjects/Scala/SpiderSpark/src/main/resources/chains.xml"
+//    var path = ".../resources/resources/chains.xml"
 //    val chains = chainsParser(path)
 //  }
 

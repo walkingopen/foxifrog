@@ -1,24 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Meta>
-    <source charset="UTF-8" delimiter="\|\|" isHeaderFirst="true">
-        <columns>
-            <column type="STRING" nullable="true" index="1"> age </column>
-            <column type="STRING" nullable="true" index="2"> job </column>
-            <column type="STRING" nullable="true" index="3"> marital </column>
-            <column type="STRING" nullable="true" index="4"> education </column>
-            <column type="STRING" nullable="true" index="5"> default </column>
-            <column type="STRING" nullable="true" index="6"> balance </column>
-            <column type="STRING" nullable="true" index="7"> housing </column>
-            <column type="STRING" nullable="true" index="8"> loan </column>
-            <column type="STRING" nullable="true" index="9"> contact </column>
-            <column type="STRING" nullable="true" index="10"> day </column>
-            <column type="STRING" nullable="true" index="11"> month </column>
-            <column type="STRING" nullable="true" index="12"> duration </column>
-            <column type="STRING" nullable="true" index="13"> campaign </column>
-            <column type="STRING" nullable="true" index="14"> pdays </column>
-            <column type="STRING" nullable="true" index="15"> previous </column>
-            <column type="STRING" nullable="true" index="16"> poutcome </column>
-            <column type="STRING" nullable="true" index="17"> y </column>
-        </columns>
-    </source>
-</Meta>
+<source charset="UTF-8" delimiter="\|\|" isHeaderFirst="true">
+    <columns>
+        <column type="STRING" nullable="true" index="1"> age </column>
+        <column type="STRING" nullable="true" index="2"> job </column>
+        <column type="STRING" nullable="true" index="3"> marital </column>
+        <column type="STRING" nullable="true" index="4"> education </column>
+        <column type="STRING" nullable="true" index="5"> default </column>
+        <column type="STRING" nullable="true" index="6"> balance </column>
+        <column type="STRING" nullable="true" index="7"> housing </column>
+        <column type="STRING" nullable="true" index="8"> loan </column>
+        <column type="STRING" nullable="true" index="9"> contact </column>
+        <column type="STRING" nullable="true" index="10"> day </column>
+        <column type="STRING" nullable="true" index="11"> month </column>
+        <column type="STRING" nullable="true" index="12"> duration </column>
+        <column type="STRING" nullable="true" index="13"> campaign </column>
+        <column type="STRING" nullable="true" index="14"> pdays </column>
+        <column type="STRING" nullable="true" index="15"> previous </column>
+        <column type="STRING" nullable="true" index="16"> poutcome </column>
+        <column type="STRING" nullable="true" index="17"> y </column>
+    </columns>
+</source>

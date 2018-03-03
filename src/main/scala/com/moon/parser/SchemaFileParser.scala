@@ -44,7 +44,7 @@ class SchemaFileParser {
 
 object SchemaFileParser {
   def main(args: Array[String]): Unit = {
-    val schemaPath="/Users/mars/Desktop/dajiatong/daja3.0/20170515/0-data/meta/20170414/AL_CF_IDX_CASEFOLDER.meta.xml"
+    val schemaPath=".../resources/people.meta"
     val table = metaParser(schemaPath)
     println(table.charset, table.dataType, table.delimiter)
     table.columns.foreach(println)
